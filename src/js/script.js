@@ -118,7 +118,6 @@
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
       thisProduct.amountWidgetElem.addEventListener('updated', function() {
         thisProduct.processOrder();
-        thisProduct.amountWidget.announce(); // dodane wywołanie metody announce
       });
     }
     
@@ -180,6 +179,7 @@
 
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
+      
 
       console.log("processOrder");
     }
@@ -306,11 +306,11 @@
 
     init: function () {
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+      //console.log('*** App starting ***');
+      //console.log('thisApp:', thisApp);
+      //console.log('classNames:', classNames);
+      //console.log('settings:', settings);
+      //console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
