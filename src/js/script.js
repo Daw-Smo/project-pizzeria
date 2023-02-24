@@ -66,7 +66,7 @@
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
 
-      console.log('new Product:', thisProduct);
+      //console.log('new Product:', thisProduct);
     }
 
     initAccordion() {
@@ -109,7 +109,7 @@
         thisProduct.processOrder();
       });
 
-      console.log('initOrderForm');
+      //console.log('initOrderForm');
     }
 
     initAmountWidget() {
@@ -127,7 +127,7 @@
 
       // convert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData', formData);
+      //console.log('formData', formData);
 
       // set price to default price
       let price = thisProduct.data.price;
@@ -136,13 +136,13 @@
       for (let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
+        //console.log(paramId, param);
 
         // for every option in this category
         for (let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log(optionId, option);
+          //console.log(optionId, option);
 
           // check if there is param with a name of paramId in formData and if it includes optionId
           if (formData[paramId] && formData[paramId].includes(optionId)) {
@@ -181,7 +181,7 @@
       thisProduct.priceElem.innerHTML = price;
       
 
-      console.log("processOrder");
+      //console.log("processOrder");
     }
 
     renderInMenu() {
@@ -191,7 +191,7 @@
       const generatedHTML = templates.menuProduct(thisProduct.data);
       /* create element using utils.createElementFromHTML */
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-      console.log('', thisProduct.element);
+      //console.log('', thisProduct.element);
       /* find menu container */
       const menuContainer = document.querySelector(select.containerOf.menu);
       /* add element to menu */
@@ -208,7 +208,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget)
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
   }
 
@@ -264,11 +264,11 @@
     initActions() {
       let previousValue = this.value;
       
-      this.input.addEventListener('change', (event) => {
+      this.input.addEventListener('change', () => {
         this.setValue(event.target.value);
       });
     
-      this.input.addEventListener('blur', (event) => {
+      this.input.addEventListener('blur', () => {
         const currentValue = parseInt(this.input.value);
         if (isNaN(currentValue)) {
           this.setValue(previousValue);
