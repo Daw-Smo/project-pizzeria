@@ -418,6 +418,12 @@
       thisCart.dom.productList.addEventListener('updated', function() {
         thisCart.update();
       });
+
+      thisCart.dom.productList.addEventListener('remove', function (event) {
+        const cartProduct = event.detail.cartProduct;
+        const productIndex = thisCart.products.indexOf(cartProduct);
+        thisCart.remove(cartProduct);
+      });      
     }
 
     update() {
@@ -433,7 +439,7 @@
       // pętla for...of po wszystkich produktach w koszyku
       for (let product of thisCart.products) {
         totalNumber += product.amount;
-        subtotalPrice += product.price * product.amount;
+        subtotalPrice += product.price;
       }
 
       // dodanie kosztu dostawy, jeśli są jakieś produkty w koszyku
@@ -475,6 +481,17 @@
       thisCart.update();
       console.log('thisCart.products', thisCart.products);
     }
+
+    remove(cartProduct) {
+      const thisCart = this;
+      const productIndex = thisCart.products.indexOf(cartProduct);
+  
+      if (productIndex !== -1) {
+        thisCart.products.splice(productIndex, 1);
+        cartProduct.dom.wrapper.remove();
+        thisCart.update();
+      }
+    }  
   }
 
   class CartProduct {
@@ -520,7 +537,35 @@
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
+
+    initActions() {
+      const thisCartProduct = this;
+  
+      thisCartProduct.dom.edit.addEventListener('click', function (event) {
+        event.preventDefault();
+      });
+  
+      thisCartProduct.dom.remove.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisCartProduct.remove();
+        console.log('remove button clicked');
+      });
+    }
+
+    remove() {
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
   }
+
 
   const app = {
     initData: function () {
