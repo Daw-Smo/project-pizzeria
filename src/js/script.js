@@ -507,6 +507,7 @@
 
       this.getElements(element);
       this.initAmountWidget();
+      this.initActions();
 
 
       console.log(thisCartProduct);
