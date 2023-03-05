@@ -421,7 +421,7 @@
 
       thisCart.dom.productList.addEventListener('remove', function (event) {
         const cartProduct = event.detail.cartProduct;
-        const productIndex = thisCart.products.indexOf(cartProduct);
+
         thisCart.remove(cartProduct);
       });      
     }
