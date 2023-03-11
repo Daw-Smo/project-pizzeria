@@ -585,7 +585,7 @@
       thisCartProduct.amountWidgetElem = thisCartProduct.dom.amountWidget;
 
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.amountWidgetElem);
-      thisCartProduct.amountWidget.setValue(settings.amountWidget.defaultValue);
+
 
       thisCartProduct.amountWidgetElem.addEventListener('updated', function () {
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
