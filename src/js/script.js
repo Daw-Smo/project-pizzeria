@@ -154,15 +154,15 @@
 
     initAmountWidget() {
       const thisProduct = this;
-      
+
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
       thisProduct.amountWidget.setValue(settings.amountWidget.defaultValue);
 
 
       thisProduct.amountWidgetElem.addEventListener('updated', function () {
         if (thisProduct.amountWidget.value !== 1) {
-        console.log('AmountWidget value', thisProduct.amountWidget.value);
-        thisProduct.processOrder();
+          console.log('AmountWidget value', thisProduct.amountWidget.value);
+          thisProduct.processOrder();
         }
       });
     }
@@ -188,7 +188,7 @@
         for (let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-        //console.log(optionId, option);
+          //console.log(optionId, option);
 
           // check if there is param with a name of paramId in formData and if it includes optionId
           if (formData[paramId] && formData[paramId].includes(optionId)) {
@@ -230,7 +230,7 @@
       thisProduct.priceElem.innerHTML = price;
 
 
-    console.log("processOrder", price);
+      console.log('processOrder', price);
     }
 
     renderInMenu() {
@@ -251,7 +251,7 @@
       const thisProduct = this;
 
       app.cart.add(thisProduct.prepareCartProduct());
-      
+
     }
 
     prepareCartProduct() {
@@ -261,7 +261,7 @@
         id: thisProduct.id,
         name: thisProduct.data.name,
         amount: thisProduct.amountWidget.value,
-        priceSingle: thisProduct.priceSingle/thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle / thisProduct.amountWidget.value,
         price: thisProduct.priceSingle,
         params: thisProduct.prepareCartProductParams()
       };
