@@ -1,5 +1,7 @@
 import {templates, select} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
+import DatePicker from './DatePicker.js';
+import HourPicker from './HourPicker.js';
 
 class Booking {
   constructor(element) {
@@ -27,6 +29,8 @@ class Booking {
     /* assign properties for people and hours amount inputs */
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
   }
 
   initWidgets(){
@@ -35,6 +39,8 @@ class Booking {
     /* create new instances of amount widgets */
     thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
+    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
     /* add listeners to the amount widgets */
     thisBooking.dom.peopleAmount.addEventListener('updated', function(){
@@ -43,6 +49,14 @@ class Booking {
 
     thisBooking.dom.hoursAmount.addEventListener('updated', function(){
       // do nothing for now
+    });
+
+    thisBooking.dom.datePicker.addEventListener('updated', function(){
+      // do something when the date is changed
+    });
+    
+    thisBooking.dom.hourPicker.addEventListener('updated', function(){
+      // do something when the hour is changed
     });
   }
 }
