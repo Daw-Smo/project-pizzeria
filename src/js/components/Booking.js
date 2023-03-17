@@ -75,7 +75,7 @@ class Booking {
 
     thisBooking.booked = {};
 
-    for (let item of eventsCurrent) {
+    for (let item of bookings) {
       thisBooking.makeBooked(item.data, item.hour, item.duration, item.table);
     }
 
@@ -92,10 +92,10 @@ class Booking {
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
         }
       }
-      // console.log('thisBooking.booked', thisBooking.booked);
-
-      thisBooking.updateDOM();
     }
+    // console.log('thisBooking.booked', thisBooking.booked);
+
+    thisBooking.updateDOM();
   }
 
     makeBooked(date, hour, duration, table) {
