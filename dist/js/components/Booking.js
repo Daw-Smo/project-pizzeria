@@ -35,14 +35,14 @@ class Booking {
       ],
     };
 
-    // console.log('getData params', params);
+    console.log('getData params', params);
 
     const urls = {
-      booking: settings.db.url + '/' + settings.db.booking
+      booking: settings.db.url + '/' + 'bookings'
         + '?' + params.booking.join('&'),
-      eventsCurrent: settings.db.url + '/' + settings.db.event
+      eventsCurrent: settings.db.url + '/' + 'events'
         + '?' + params.eventsCurrent.join('&'),
-      eventsRepeat: settings.db.url + '/' + settings.db.event
+      eventsRepeat: settings.db.url + '/' + 'events'
         + '?' + params.eventsRepeat.join('&'),
     };
 
