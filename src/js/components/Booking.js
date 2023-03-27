@@ -9,9 +9,11 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.selectedTable = null;
-
+    thisBooking.dom = {};
+    
     thisBooking.render(element);
     thisBooking.initWidgets();
+    thisBooking.initTables();
     thisBooking.getData();
   }
 
@@ -196,7 +198,7 @@ class Booking {
     });
     // dodano poniżej kod
 
-    for (let table of thisBooking.dom.tables) {
+    /*for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function() {
         thisBooking.initTables();
       });
@@ -211,7 +213,7 @@ class Booking {
 
   initTables() {
     const thisBooking = this;
-
+  
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function () {
         if (table.classList.contains(classNames.booking.tableBooked)) {
@@ -222,7 +224,7 @@ class Booking {
           }
           table.parentNode.classList.add(classNames.booking.selected); // dodanie klasy selected do rodzica
           thisBooking.selectedTable = table.parentNode;
-
+  
           thisBooking.updateDOM(); // odświeżenie widoku
         }
       });
