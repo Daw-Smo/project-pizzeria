@@ -222,8 +222,8 @@ class Booking {
           if (thisBooking.selectedTable) { // usuwanie klasy selected z wybranego stolika
             thisBooking.selectedTable.classList.remove(classNames.booking.selected);
           }
-          table.parentNode.classList.add(classNames.booking.selected); // dodanie klasy selected do rodzica
-          thisBooking.selectedTable = table.parentNode;
+          table.classList.add(classNames.booking.selected); // dodanie klasy selected do rodzica
+          thisBooking.selectedTable = table;
   
           thisBooking.updateDOM(); // odświeżenie widoku
         }
